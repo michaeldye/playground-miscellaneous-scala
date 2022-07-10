@@ -19,11 +19,13 @@ object SearchList {
     def elementRelativeToTarget0(sub: Seq[Int]): Int = {
       if (sub == null || sub.isEmpty) -1
       else {
-        val sel = sub(sub.size/2)
+        val midIx = sub.size / 2
+        val sel = sub(midIx)
+
         if (n == sel) sel
         else if (sub.size == 1 && sub.head <= n) sub.head // necessary to get us the next smaller element to n if n isn't in seq
-        else if (n <= sel) elementRelativeToTarget0(sub.slice(0, sub.size/2))
-        else elementRelativeToTarget0(sub.slice(sub.size/2, sub.size+1))
+        else if (n <= sel) elementRelativeToTarget0(sub.slice(0, midIx))
+        else elementRelativeToTarget0(sub.slice(midIx, sub.size+1))
       }
     }
 
